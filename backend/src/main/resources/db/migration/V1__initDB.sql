@@ -1,18 +1,3 @@
--- Database generated with pgModeler (PostgreSQL Database Modeler).
--- pgModeler  version: 0.9.3
--- PostgreSQL version: 13.0
--- Project Site: pgmodeler.io
--- Model Author: ---
-
--- Database creation must be performed outside a multi lined SQL file.
--- These commands were put in this file only as a convenience.
---
--- object: embedika_cars | type: DATABASE --
--- DROP DATABASE IF EXISTS embedika_cars;
-CREATE DATABASE embedika_cars;
--- ddl-end --
-
-
 -- object: public.car | type: TABLE --
 -- DROP TABLE IF EXISTS public.car CASCADE;
 CREATE TABLE public.car (
