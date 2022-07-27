@@ -6,6 +6,7 @@ CREATE TABLE public.car (
                             model_id uuid NOT NULL,
                             color_code smallint NOT NULL,
                             year smallint NOT NULL,
+                            create_time timestamp NOT NULL,
                             car_model_id uuid,
                             CONSTRAINT car_pk PRIMARY KEY (id)
 
@@ -23,7 +24,9 @@ COMMENT ON COLUMN public.car.color_code IS E'Код цвета из справо
 -- ddl-end --
 COMMENT ON COLUMN public.car.year IS E'Год выпуска';
 -- ddl-end --
-ALTER TABLE public.car OWNER TO embedika_cars;
+COMMENT ON COLUMN public.car.create_time IS E'Время создания записи';
+-- ddl-end --
+ALTER TABLE public.car OWNER TO embedika_app;
 -- ddl-end --
 
 -- object: public.car_model | type: TABLE --
@@ -45,7 +48,7 @@ COMMENT ON COLUMN public.car_model.brand_id IS E'Идентификатор бр
 -- ddl-end --
 COMMENT ON COLUMN public.car_model.name IS E'Название модели';
 -- ddl-end --
-ALTER TABLE public.car_model OWNER TO embedika_cars;
+ALTER TABLE public.car_model OWNER TO embedika_app;
 -- ddl-end --
 
 -- object: car_model_fk | type: CONSTRAINT --
@@ -70,7 +73,7 @@ COMMENT ON COLUMN public.car_brand.id IS E'Идентификатор';
 -- ddl-end --
 COMMENT ON COLUMN public.car_brand.name IS E'Название';
 -- ddl-end --
-ALTER TABLE public.car_brand OWNER TO embedika_cars;
+ALTER TABLE public.car_brand OWNER TO embedika_app;
 -- ddl-end --
 
 -- object: car_brand_fk | type: CONSTRAINT --
