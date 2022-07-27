@@ -16,7 +16,7 @@ public class CarModel extends AbstractPersistable<UUID> {
 	 * Бренд
 	 */
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "brand_id", nullable = false)
+	@JoinColumn(name = "car_brand_id", nullable = false)
 	private CarBrand brand;
 
 	/**
