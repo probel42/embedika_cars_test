@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 /**
@@ -39,4 +40,11 @@ public class Car extends AbstractPersistable<UUID> {
 	 */
 	@Column(name = "year", length = 4, nullable = false)
 	private Short year;
+
+	/**
+	 * Время создания записи
+	 */
+	@Column(name = "create_time", nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private LocalDateTime createTime;
 }
