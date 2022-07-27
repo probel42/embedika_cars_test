@@ -45,6 +45,5 @@ public class Car extends AbstractPersistable<UUID> {
 	 * Время создания записи
 	 */
 	@Column(name = "create_time", nullable = false)
-	@Temporal(TemporalType.TIMESTAMP)
 	private LocalDateTime createTime;
 }

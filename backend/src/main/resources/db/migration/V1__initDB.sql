@@ -7,7 +7,8 @@ CREATE TABLE public.car (
                             color_code smallint NOT NULL,
                             year smallint NOT NULL,
                             create_time timestamp NOT NULL,
-                            CONSTRAINT car_pk PRIMARY KEY (id)
+                            CONSTRAINT car_pk PRIMARY KEY (id),
+                            CONSTRAINT number_uq UNIQUE (reg_plate)
 
 );
 -- ddl-end --
@@ -22,6 +23,8 @@ COMMENT ON COLUMN public.car.color_code IS E'Код цвета из справо
 COMMENT ON COLUMN public.car.year IS E'Год выпуска';
 -- ddl-end --
 COMMENT ON COLUMN public.car.create_time IS E'Время создания записи';
+-- ddl-end --
+COMMENT ON CONSTRAINT number_uq ON public.car  IS E'Номер автомобиля уникален';
 -- ddl-end --
 ALTER TABLE public.car OWNER TO embedika_app;
 -- ddl-end --
@@ -50,7 +53,8 @@ ALTER TABLE public.car_model OWNER TO embedika_app;
 CREATE TABLE public.car_brand (
                                   id uuid NOT NULL,
                                   name varchar(100) NOT NULL,
-                                  CONSTRAINT car_brand_pk PRIMARY KEY (id)
+                                  CONSTRAINT car_brand_pk PRIMARY KEY (id),
+                                  CONSTRAINT brand_uq UNIQUE (name)
 
 );
 -- ddl-end --
@@ -59,6 +63,8 @@ COMMENT ON TABLE public.car_brand IS E'Бренд автомобиля';
 COMMENT ON COLUMN public.car_brand.id IS E'Идентификатор';
 -- ddl-end --
 COMMENT ON COLUMN public.car_brand.name IS E'Название';
+-- ddl-end --
+COMMENT ON CONSTRAINT brand_uq ON public.car_brand  IS E'Название бренда уникально';
 -- ddl-end --
 ALTER TABLE public.car_brand OWNER TO embedika_app;
 -- ddl-end --
@@ -76,5 +82,13 @@ ALTER TABLE public.car_model ADD CONSTRAINT car_brand_fk FOREIGN KEY (car_brand_
     REFERENCES public.car_brand (id) MATCH FULL
     ON DELETE RESTRICT ON UPDATE RESTRICT;
 -- ddl-end --
+
+-- object: model_uq | type: CONSTRAINT --
+-- ALTER TABLE public.car_model DROP CONSTRAINT IF EXISTS model_uq CASCADE;
+ALTER TABLE public.car_model ADD CONSTRAINT model_uq UNIQUE (car_brand_id,name);
+-- ddl-end --
+COMMENT ON CONSTRAINT model_uq ON public.car_model  IS E'Модель уникальна в пределах бренда';
+-- ddl-end --
+
 
 

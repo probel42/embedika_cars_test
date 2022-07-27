@@ -6,7 +6,9 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -19,4 +21,7 @@ public class CarBrand extends AbstractPersistable<UUID> {
 	 */
 	@Column(name = "name", nullable = false)
 	private String name;
+
+	@OneToMany(mappedBy = "brand")
+	private List<CarModel> models;
 }

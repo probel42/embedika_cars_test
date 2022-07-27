@@ -1,0 +1,7 @@
+input CarInput {
+    regPlate: String!
+    model: String!
+    brand: String!
+    colorCode: Int!
+    year: Int!
+}

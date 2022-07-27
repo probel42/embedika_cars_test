@@ -1,0 +1,26 @@
+type Car {
+    id: ID
+    regPlate: String
+    brand: String
+    model: String
+    color: CarColor
+    year: Int
+    createTime: String
+}
+
+type CarBrand {
+    name: String
+    models: [CarModel]
+}
+
+type CarModel {
+    name: String
+}
+
+type CarColor {
+    code: String
+    hex: String
+    name: String
+    description: String
+    metallic: Boolean
+}

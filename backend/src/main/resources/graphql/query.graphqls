@@ -1,0 +1,9 @@
+type Query {
+    cars(page: Int!, size: Int!): [Car]
+    car(id: ID!): Car
+
+    carBrands: [CarBrand]
+    carBrand(name: String): CarBrand
+
+    carColors: [CarColor]
+}

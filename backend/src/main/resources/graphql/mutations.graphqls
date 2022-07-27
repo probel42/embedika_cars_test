@@ -1,0 +1,4 @@
+type Mutation {
+    addCar(car: CarInput): String
+    removeCar(id: ID): String
+}
