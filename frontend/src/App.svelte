@@ -1,30 +1,25 @@
 <script lang="ts">
-	export let name: string;
+    import ApolloClient from 'apollo-boost';
+    import {setClient} from 'svelte-apollo';
+    import CarsView from './cars/CarsView.svelte';
+    import CarAdd from './cars/CarAdd.svelte';
+    import Router from 'svelte-spa-router'
+
+    // const env = _env;
+    const client = new ApolloClient({uri: 'http://localhost:8080/'});
+    setClient(client);
+
+    const routes = {
+        '/': CarsView,
+        '/add': CarAdd
+    }
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
+<body>
+<Router {routes}/>
+</body>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
+    @media (min-width: 640px) {
+    }
 </style>
