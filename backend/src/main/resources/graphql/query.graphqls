@@ -1,6 +1,7 @@
 type Query {
     cars(page: Int!, size: Int!): [Car]
     car(id: ID!): Car
+    carsNumber: Int!
 
     carBrands: [CarBrand]
     carBrand(name: String): CarBrand

@@ -70,6 +70,11 @@ public class CarServiceImpl implements CarService {
 	}
 
 	@Override
+	public long getCarsNumber() {
+		return carRepository.count();
+	}
+
+	@Override
 	public void removeCar(String id) throws CarAppException {
 		Car car = carRepository.findById(UUID.fromString(id))
 				.orElseThrow(() -> new CarAppException(String.format("Не найден автомобиль с id \"%s\"", id)));

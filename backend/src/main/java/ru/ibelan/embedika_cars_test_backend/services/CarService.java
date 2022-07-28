@@ -29,6 +29,11 @@ public interface CarService {
 	String addCar(CarInput carInput);
 
 	/**
+	 * @return количество автомобилей в базе
+	 */
+	long getCarsNumber();
+
+	/**
 	 * Удалить автомобиль
 	 *
 	 * @param id идентификатор

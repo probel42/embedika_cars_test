@@ -31,6 +31,11 @@ public class CarController {
 	}
 
 	@QueryMapping
+	public long carsNumber() {
+		return carService.getCarsNumber();
+	}
+
+	@QueryMapping
 	public List<CarBrand> carBrands() {
 		return carService.getCarBrands();
 	}
